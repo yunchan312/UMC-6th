@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="validation.css" />
+  </head>
+  <body>
+    <form class="container">
+      <div class="title">회원가입</div>
+      <div class="name wrapper">
+        <div class="name_text">이름</div>
+        <input type="text" />
+        <div class="error error_name" style="display: none">
+          필수 입력 항목 입니다!
+        </div>
+        <div class="valid valid_name" style="display: none">
+          멋진 이름이네요!
+        </div>
+      </div>
+      <div class="email wrapper">
+        <div class="email_text">이메일</div>
+        <input type="email" />
+        <div class="error error_email" style="display: none">
+          올바른 이메일 형식이 아닙니다!
+        </div>
+        <div class="valid valid_email" style="display: none">
+          올바른 이메일 형식입니다!
+        </div>
+      </div>
+      <div class="age wrapper">
+        <div class="age_text">나이</div>
+        <input type="number" />
+        <div class="error error_age" style="display: none">
+          나이를 입력해주세요! 19세 미만은 가입하실 수 없습니다.
+        </div>
+        <div class="valid valid_age" style="display: none">
+          올바른 나이 형식입니다!
+        </div>
+      </div>
+      <div class="password wrapper">
+        <div class="password_text">비밀번호</div>
+        <input type="password" />
+        <div class="error error_password" style="display: none">
+          비밀번호는 영어, 숫자, 특수문자를 포함한 최소 4~12자리 입니다.
+        </div>
+        <div class="valid valid_password" style="display: none">
+          올바른 비밀번호입니다!
+        </div>
+      </div>
+      <div class="check wrapper">
+        <div class="check_text">비밀번호 확인</div>
+        <input type="password" />
+        <div class="error error_check" style="display: none">
+          비밀번호가 일치하지 않습니다.
+        </div>
+        <div class="valid valid_check" style="display: none">
+          비밀번호가 일치합니다.
+        </div>
+      </div>
+      <div class="wrapper">
+        <input class="btn" type="submit" value="제출" />
+      </div>
+    </form>
+    <div class="modalWrapper" style="display: none">
+      <div class="modal">
+        <h2>가입 성공!</h2>
+        <div>umc 챌린저 가입을 축하합니다!!</div>
+        <button>닫기</button>
+      </div>
+    </div>
+    <script src="./validation.js"></script>
+  </body>
+</html>

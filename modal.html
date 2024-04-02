@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .modalBg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background-color: white;
+      padding: 10px 50px;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      button {
+        width: 50px;
+        align-self: flex-end;
+      }
+    }
+  </style>
+  <body>
+    <div class="main">
+      <h2>안녕하세요!</h2>
+      <div class="content">내용내용내용</div>
+      <button class="open">버튼열기</button>
+    </div>
+    <div class="modalBg" class="modal" style="display: none">
+      <div class="modal">
+        <h3>안녕하세요</h3>
+        <h4>모달 내용은 어쩌고 저쩌고</h4>
+        <button class="close">닫기</button>
+      </div>
+    </div>
+    <script>
+      const openBtn = document.querySelector(".open");
+      const closeBtn = document.querySelector(".close");
+      const modalBg = document.querySelector(".modalBg");
+
+      function onOpen() {
+        modalBg.style.display = "flex";
+      }
+
+      function onClose() {
+        modalBg.style.display = "none";
+      }
+
+      openBtn.addEventListener("click", onOpen);
+      closeBtn.addEventListener("click", onClose);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<div>
+  <div class="num">0</div>
+  <div>
+    <button class="plus">+1</button>
+
+    <button class="minus">-1</button>
+  </div>
+</div>
+
+<script>
+  const plus = document.querySelector(".plus");
+  const minus = document.querySelector(".minus");
+
+  let num = 0;
+  function onPlus() {
+    num = num + 1;
+    document.querySelector(".num").innerText = num;
+  }
+  function onMinus() {
+    num = num - 1;
+    document.querySelector(".num").innerText = num;
+  }
+  plus.addEventListener("click", onPlus);
+  minus.addEventListener("click", onMinus);
+</script>
