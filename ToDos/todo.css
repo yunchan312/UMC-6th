@@ -8,7 +8,7 @@ body {
 }
 .wrapper {
   background-color: rgba(255, 255, 255, 0.7);
-  width: 80%;
+  width: 800px;
   min-height: 760px;
   display: flex;
   flex-direction: column;
@@ -26,10 +26,22 @@ body {
   align-items: center;
 }
 .lists {
-  width: 100%;
+  width: 700px;
   display: flex;
+  flex-direction: column;
   gap: 20px;
   justify-content: space-around;
+}
+.titles {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.plate {
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 .todos,
 .dones {
@@ -58,6 +70,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 form {
   width: 100%;
   text-align: center;

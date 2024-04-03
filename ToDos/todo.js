@@ -1,8 +1,7 @@
 const form = document.querySelector(".form");
-const todoBoard = document.querySelector(".todos");
 const doneBoard = document.querySelector(".dones");
 const del = document.querySelector(".delete");
-let todoNodes = document.querySelector(".todoNodes");
+const todoNodes = document.querySelector(".todos");
 
 function paintNode(todoObj) {
   const newTodo = document.createElement("div");
