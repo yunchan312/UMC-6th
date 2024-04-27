@@ -6,6 +6,7 @@ import NowPlaying from "./Routes/NowPlaying";
 import Popular from "./Routes/Popular";
 import TopRated from "./Routes/TopRated";
 import Upcoming from "./Routes/Upcoming";
+import Detail from "./Routes/Detail";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,10 @@ function App() {
         { path: "/top", element: <TopRated /> },
         { path: "/upcoming", element: <Upcoming /> },
       ],
+    },
+    {
+      path: "/:id",
+      element: <Detail />,
     },
   ]);
   return (
