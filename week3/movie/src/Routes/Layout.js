@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { navState } from "../atom";
+import { isAuth, navState } from "../atom";
 import Loading from "../Components/Loading";
 import { useEffect, useState } from "react";
 
@@ -8,6 +8,7 @@ export default function Layout() {
   const navigate = useNavigate();
   const [status, setStatus] = useRecoilState(navState);
   const [isLoading, setIsLoading] = useState(true);
+  const [loginStatus, setLoginStatus] = useRecoilState(isAuth);
   const Init = () => {
     setTimeout(() => {
       setIsLoading(false);
@@ -30,18 +31,15 @@ export default function Layout() {
         </span>
         <span className="flex gap-4">
           <span
-            className={`cursor-pointer ${
+            className={`cursor-pointer hover:scale-[1.1] ${
               status === 1 ? "text-logo" : "text-white"
             }`}
-            onClick={() => {
-              navigate("/create");
-              setStatus(1);
-            }}
+            onClick={() => setLoginStatus((prev) => (prev = !prev))}
           >
-            회원가입
+            {loginStatus ? "로그아웃" : "로그인"}
           </span>
           <span
-            className={`cursor-pointer ${
+            className={`cursor-pointer hover:scale-[1.1] ${
               status === 2 ? "text-logo" : "text-white"
             }`}
             onClick={() => {
@@ -52,7 +50,7 @@ export default function Layout() {
             Popular
           </span>
           <span
-            className={`cursor-pointer ${
+            className={`cursor-pointer hover:scale-[1.1] ${
               status === 3 ? "text-logo" : "text-white"
             }`}
             onClick={() => {
@@ -63,7 +61,7 @@ export default function Layout() {
             Now Playing
           </span>
           <span
-            className={`cursor-pointer ${
+            className={`cursor-pointer hover:scale-[1.1] ${
               status === 4 ? "text-logo" : "text-white"
             }`}
             onClick={() => {
@@ -74,7 +72,7 @@ export default function Layout() {
             Top Rated
           </span>
           <span
-            className={`cursor-pointer ${
+            className={`cursor-pointer hover:scale-[1.1] ${
               status === 5 ? "text-logo" : "text-white"
             }`}
             onClick={() => {

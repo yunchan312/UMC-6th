@@ -7,6 +7,7 @@ import Popular from "./Routes/Popular";
 import TopRated from "./Routes/TopRated";
 import Upcoming from "./Routes/Upcoming";
 import Detail from "./Routes/Detail";
+import NotFound from "./Routes/NotFound";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,10 +21,14 @@ function App() {
         { path: "/popular", element: <Popular /> },
         { path: "/top", element: <TopRated /> },
         { path: "/upcoming", element: <Upcoming /> },
+        {
+          path: "/*",
+          element: <NotFound />,
+        },
       ],
     },
     {
-      path: "/:id",
+      path: "/movie/:id",
       element: <Detail />,
     },
   ]);

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { currMovieState } from "../atom";
 import { getPopular } from "../api";
@@ -11,6 +11,7 @@ export default function Popular() {
     const result = await getPopular();
     setMovies(result);
   };
+
   useEffect(() => {
     getMovies();
   }, []);

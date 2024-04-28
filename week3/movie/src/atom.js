@@ -9,3 +9,8 @@ export const navState = atom({
   key: "navState",
   default: 0,
 });
+
+export const isAuth = atom({
+  key: "isAuth",
+  default: false,
+});

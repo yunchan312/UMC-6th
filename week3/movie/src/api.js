@@ -62,10 +62,10 @@ export const getDetail = async (id) => {
   return temp;
 };
 
-export const getSearch = async (query) => {
+export const getSearch = async (target) => {
   const temp = await axios
     .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=df298b7fcfd4e5ab46610192dc9adee7&query=dune&watch_region=KR&language=ko`
+      `https://api.themoviedb.org/3/search/movie?api_key=df298b7fcfd4e5ab46610192dc9adee7&query=${target}&watch_region=KR&language=ko`
     )
     .then((res) => {
       return res.data;
