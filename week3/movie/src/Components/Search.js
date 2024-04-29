@@ -20,12 +20,12 @@ export default function Search({ movies }) {
   }, []);
   return (
     <div
-      className="w-[100vw] h-[842px] text-center bg-cover bg-start"
+      className={`w-[100vw] h-full text-center bg-cover bg-start`}
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${movies[num].backdrop_path})`,
       }}
     >
-      <div className="absolute w-[100vw] h-[842px] bg-gradient-to-r from-black to-transparent animate-fadeOut" />
+      <div className="absolute w-full h-full bg-gradient-to-r from-black to-transparent animate-fadeOut" />
       <form
         className="h-full relative bottom-10 z-10 flex flex-col justify-center items-center gap-5"
         onSubmit={onSubmit}

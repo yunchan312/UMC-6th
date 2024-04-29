@@ -3,7 +3,6 @@ import Search from "../Components/Search";
 import { currMovieState } from "../atom";
 import { getTop } from "../api";
 import { useEffect, useState } from "react";
-import SearchResult from "../Components/SearchResult";
 import Loading from "../Components/Loading";
 
 export default function Home() {
@@ -22,7 +21,7 @@ export default function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="flex h-[842px] w-[100vw]">
+        <div className="flex overflow-hidden h-[100vh]">
           <Search movies={movies} />
         </div>
       )}

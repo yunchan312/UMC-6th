@@ -16,15 +16,12 @@ export default function Detail() {
     const result = await getDetail(id);
     setDetail(result);
     setGenres(detail.genres);
+    setLoading(false);
   };
   const onClick = () => {
     navigate(-1);
   };
-  const init = () => {
-    setTimeout(() => setLoading(false), 1000);
-  };
   useEffect(() => {
-    init();
     getDetails();
   }, [id, genres]);
   return (

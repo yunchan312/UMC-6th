@@ -28,7 +28,7 @@ function App() {
       ],
     },
     {
-      path: "/movie/:id",
+      path: "/detail/:id",
       element: <Detail />,
     },
   ]);
