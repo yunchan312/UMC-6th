@@ -11,6 +11,7 @@ export default function Popular() {
     const result = await getPopular();
     setMovies(result);
   };
+
   useEffect(() => {
     getMovies();
   }, []);

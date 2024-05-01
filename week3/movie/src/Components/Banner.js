@@ -7,19 +7,19 @@ export default function Banner({
   return (
     <div>
       {backdrop_path ? (
-        <div>
-          <div
-            className="w-full h-[80vh] bg-cover"
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
-            }}
-          >
-            <div className="px-10 w-[80%] h-full text-white bg-gradient-to-r from-black via-black to-transparent flex justify-center items-center">
-              <div>
-                <div className="text-[50px]">{title}</div>
-                <div className="text-[45px]">⭐{vote_average.toFixed(1)}</div>
-                <div className="text-lg w-[60%]">{overview}</div>
-              </div>
+        <div
+          className="w-full h-[80vh] bg-cover"
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
+          }}
+        >
+          <div className="w-[80%] px-10 h-full text-white bg-gradient-to-r from-black via-black to-transparent flex justify-start items-center">
+            <div className="w-[50%]">
+              <div className="text-[50px]">{title}</div>
+              <div className="text-[45px]">⭐{vote_average.toFixed(1)}</div>
+              {overview == "" ? null : (
+                <div className="text-lg w-full">{overview}</div>
+              )}
             </div>
           </div>
         </div>

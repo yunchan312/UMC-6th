@@ -9,19 +9,19 @@ export default function Detail() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
+  const getStar = (t) => {
+    return "⭐".repeat(t);
+  };
   const getDetails = async () => {
     const result = await getDetail(id);
     setDetail(result);
     setGenres(detail.genres);
+    setLoading(false);
   };
   const onClick = () => {
     navigate(-1);
   };
-  const init = () => {
-    setTimeout(() => setLoading(false), 1000);
-  };
   useEffect(() => {
-    init();
     getDetails();
   }, [id, genres]);
   return (
@@ -53,10 +53,12 @@ export default function Detail() {
                     ({detail.release_date})
                   </span>
                 </div>
-                <div>평점 ⭐{detail.vote_average.toFixed(1)}</div>
+                <div>평점 {getStar(Math.floor(detail.vote_average))}</div>
                 <div>
                   <div>줄거리</div>
-                  {detail.overview}
+                  {detail.overview === ""
+                    ? "제공하는 줄거리가 없습니다."
+                    : detail.overview}
                 </div>
                 <div>
                   <div>장르</div>

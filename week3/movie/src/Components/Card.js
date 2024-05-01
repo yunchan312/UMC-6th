@@ -14,7 +14,7 @@ export default function Card({
     setIsMouse((prev) => (prev = !prev));
   };
   const onClick = () => {
-    navigate(`/${id}`);
+    navigate(`/detail/${id}`);
   };
   return (
     <div
@@ -24,7 +24,7 @@ export default function Card({
       className="h-[400px] bg-black w-[200px] border-2 border-logo"
     >
       {isMouse ? (
-        <div className="text-white absolute w-[196px] h-[300px] p-2 bg-black overflow-y-scroll no-scrollbar">
+        <div className="text-white absolute w-[196px] h-[300px] p-2 bg-black overflow-y-scroll no-scrollbar select-none cursor-pointer">
           {overview}
         </div>
       ) : null}
