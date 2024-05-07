@@ -6,6 +6,21 @@
 @layer base {
   body {
     font-family: "Noto Sans", "Noto Sans KR", sans-serif;
+    background-color: black;
+    color: white;
+  }
+}
+
+@layer components {
+  .account-input {
+    border: 2px solid white;
+    width: 500px;
+    height: 40px;
+    padding-left: 15px;
+    border-radius: 50px;
+  }
+  .error {
+    color: red;
   }
 }
 

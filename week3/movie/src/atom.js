@@ -10,7 +10,12 @@ export const navState = atom({
   default: 0,
 });
 
-export const isAuth = atom({
-  key: "isAuth",
+export const auth = atom({
+  key: "auth",
+  default: {},
+});
+
+export const isLogin = atom({
+  key: "isLogin",
   default: false,
 });

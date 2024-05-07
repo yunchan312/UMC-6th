@@ -16,7 +16,6 @@ function App() {
       element: <Layout />,
       children: [
         { path: "", element: <Home /> },
-        { path: "/create", element: <MakeAccount /> },
         { path: "/now", element: <NowPlaying /> },
         { path: "/popular", element: <Popular /> },
         { path: "/top", element: <TopRated /> },
@@ -27,6 +26,7 @@ function App() {
         },
       ],
     },
+    { path: "/create", element: <MakeAccount /> },
     {
       path: "/detail/:id",
       element: <Detail />,
