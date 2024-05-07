@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { isAuth, navState } from "../atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { auth, isLogin, navState } from "../atom";
 
 export default function Nav() {
   const navigate = useNavigate();
   const [status, setStatus] = useRecoilState(navState);
-  const [loginStatus, setLoginStatus] = useRecoilState(isAuth);
+  const loginStatus = useRecoilValue(isLogin);
+  const user = useRecoilValue(auth);
   return (
-    <div className="gap-10 flex justify-between px-12 py-1 items-center bg-gradient-to-b from-black via-black/60 to-transparent">
+    <div className="gap-10 flex justify-between px-12 py-1 items-center bg-gradient-to-b from-black via-black/60 to-transparent w-[100vw]">
       <span
         className="text-[35px] font-bold text-logo title cursor-pointer"
         onClick={() => {
@@ -19,12 +20,17 @@ export default function Nav() {
       </span>
       <span className="flex gap-4">
         <span
-          className={`cursor-pointer hover:scale-[1.1] ${
+          className={`cursor-pointer flex gap-3 ${
             status === 1 ? "text-logo" : "text-white"
           }`}
-          onClick={() => setLoginStatus((prev) => (prev = !prev))}
         >
-          {loginStatus ? "로그아웃" : "로그인"}
+          <span>반가워요 {user.name}님!</span>
+          <span
+            onClick={() => navigate("/create")}
+            className="hover:scale-[1.1]"
+          >
+            {loginStatus ? "로그아웃" : "로그인"}
+          </span>
         </span>
         <span
           className={`cursor-pointer hover:scale-[1.1] ${
