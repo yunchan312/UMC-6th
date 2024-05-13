@@ -8,6 +8,7 @@ import TopRated from "./Routes/TopRated";
 import Upcoming from "./Routes/Upcoming";
 import Detail from "./Routes/Detail";
 import NotFound from "./Routes/NotFound";
+import Login from "./Routes/Login";
 
 function App() {
   const router = createBrowserRouter([
@@ -27,6 +28,7 @@ function App() {
       ],
     },
     { path: "/create", element: <MakeAccount /> },
+    { path: "/login", element: <Login /> },
     {
       path: "/detail/:id",
       element: <Detail />,

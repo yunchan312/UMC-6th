@@ -5,8 +5,8 @@ import { auth, isLogin, navState } from "../atom";
 export default function Nav() {
   const navigate = useNavigate();
   const [status, setStatus] = useRecoilState(navState);
-  const loginStatus = useRecoilValue(isLogin);
-  const user = useRecoilValue(auth);
+  const [loginStatus, setLoginState] = useRecoilState(isLogin);
+  const [user, setUser] = useRecoilState(auth);
   return (
     <div className="gap-10 flex justify-between px-12 py-1 items-center bg-gradient-to-b from-black via-black/60 to-transparent w-[100vw]">
       <span
@@ -24,13 +24,28 @@ export default function Nav() {
             status === 1 ? "text-logo" : "text-white"
           }`}
         >
-          <span>반가워요 {user.name}님!</span>
-          <span
-            onClick={() => navigate("/create")}
-            className="hover:scale-[1.1]"
-          >
-            {loginStatus ? "로그아웃" : "로그인"}
+          <span>
+            {loginStatus ? `반가워요 ${user.name}님!` : `로그인이 필요합니다.`}
           </span>
+          {loginStatus ? (
+            <span
+              onClick={() => {
+                navigate("/login");
+                setLoginState(false);
+                setUser({});
+              }}
+              className="hover:scale-[1.1]"
+            >
+              로그아웃
+            </span>
+          ) : (
+            <span
+              onClick={() => navigate("/login")}
+              className="hover:scale-[1.1]"
+            >
+              로그인
+            </span>
+          )}
         </span>
         <span
           className={`cursor-pointer hover:scale-[1.1] ${

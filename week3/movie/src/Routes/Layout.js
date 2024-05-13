@@ -1,7 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
 import { useEffect, useState } from "react";
 import Nav from "../Components/Nav";
+import { useRecoilValue } from "recoil";
+import { isLogin } from "../atom";
 
 export default function Layout() {
   const [isLoading, setIsLoading] = useState(true);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getSearch } from "../api";
 import SearchCard from "./SearchCard";
 import Loading from "./Loading";
+import { ClimbingBoxLoader } from "react-spinners";
 
 export default function SearchResult({ target }) {
   const [searchMovies, setSearchMovies] = useState([]);
@@ -14,16 +15,20 @@ export default function SearchResult({ target }) {
   };
   useEffect(() => {
     getMovies();
-    console.log(searchMovies);
   }, [target]);
   return (
-    <div className="text-white flex flex-col w-[40%] overflow-y-scroll mr-auto ml-auto max-h-[400px]">
+    <div className="no-scrollbar text-white w-[80%] overflow-y-scroll mr-auto ml-auto h-[500px]">
       {loading ? (
-        <Loading />
+        <div className="flex flex-col justify-center items-center h-[500px]">
+          <ClimbingBoxLoader color="#de0913" size={20} />
+          <div>searching...</div>
+        </div>
       ) : (
-        searchMovies.map((movie) => {
-          return <SearchCard key={movie.id} {...movie} />;
-        })
+        <div className="flex gap-4 flex-wrap ">
+          {searchMovies.map((movie) => {
+            return <SearchCard key={movie.id} {...movie} />;
+          })}
+        </div>
       )}
     </div>
   );
