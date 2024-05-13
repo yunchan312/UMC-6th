@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import SearchResult from "./SearchResult";
+import useDebounce from "../Utility/useDebounce";
 
 export default function Search({ movies }) {
   const [num, setNum] = useState(0);
   const [target, setTarget] = useState("");
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setTarget(e.target[0].value);
+  const debouncedValue = useDebounce(target, 200);
+  const onChange = (e) => {
+    setTarget(e.target.value);
   };
   useEffect(() => {
     const timer = setInterval(() => {
@@ -26,19 +27,17 @@ export default function Search({ movies }) {
       }}
     >
       <div className="absolute w-full h-full bg-gradient-to-r from-black to-transparent animate-fadeOut" />
-      <form
-        className="h-full relative bottom-10 z-10 flex flex-col justify-center items-center gap-5"
-        onSubmit={onSubmit}
-      >
+      <form className="h-full relative bottom-10 z-10 flex flex-col justify-center items-center gap-5">
         <div className="text-white text-[40px]">찾고싶은 영화를 검색하세요</div>
         <input
           type="text"
-          className="border-2 border-black rounded-full px-4 py-2 w-[40%] focus:border-logo focus:outline-none"
+          className="border-2 border-black text-black rounded-full px-4 py-2 w-[40%] focus:border-logo focus:outline-none"
           placeholder="Type here"
+          onChange={onChange}
         />
         <input type="submit" value="search" className="hidden" />
         <div className="w-full">
-          {target ? <SearchResult target={target} /> : null}
+          <SearchResult target={debouncedValue} />
         </div>
       </form>
     </div>

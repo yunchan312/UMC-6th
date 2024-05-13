@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { auth, isLogin } from "../atom";
@@ -15,7 +14,6 @@ export default function MakeAccount() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     setUser(data);
     setIslogin(true);
     alert("회원가입을 축하합니다!");
@@ -130,6 +128,15 @@ export default function MakeAccount() {
           </div>
         )}
       </form>
+      <div className="">
+        계정이 이미 있어요{" "}
+        <span
+          className="cursor-pointer text-logo"
+          onClick={() => navigate("/login")}
+        >
+          로그인하러 가기&rarr;
+        </span>
+      </div>
     </div>
   );
 }
