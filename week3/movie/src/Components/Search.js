@@ -9,10 +9,16 @@ export default function Search({ movies }) {
   const onChange = (e) => {
     setTarget(e.target.value);
   };
+  const controlNum = (prev) => {
+    if (prev + 1 >= 20) {
+      return 0;
+    } else {
+      return prev + 1;
+    }
+  };
   useEffect(() => {
     const timer = setInterval(() => {
-      if (num >= 20) setNum(0);
-      else setNum((prev) => (prev = prev + 1));
+      setNum((prev) => controlNum(prev));
     }, 30000);
 
     return () => {
