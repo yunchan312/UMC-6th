@@ -19,3 +19,8 @@ export const isLogin = atom({
   key: "isLogin",
   default: false,
 });
+
+export const page = atom({
+  key: "page",
+  default: 1,
+});

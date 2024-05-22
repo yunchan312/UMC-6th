@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 import { auth, isLogin } from "../atom";
 import { useNavigate } from "react-router-dom";
+import { postCreate } from "../api";
+import { useCookies } from "react-cookie";
 
 export default function MakeAccount() {
+  const [cookies, setCookies] = useCookies();
   const setUser = useSetRecoilState(auth);
   const setIslogin = useSetRecoilState(isLogin);
   const navigate = useNavigate();
@@ -13,11 +16,17 @@ export default function MakeAccount() {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    setUser(data);
-    setIslogin(true);
-    alert("회원가입을 축하합니다!");
-    navigate("/");
+
+  const onSubmit = async (data) => {
+    const tempAuth = await postCreate(data);
+    if (tempAuth) {
+      setUser(tempAuth);
+      setCookies("token", tempAuth.token);
+      setCookies("username", tempAuth.username);
+      setIslogin(true);
+      alert("회원가입 성공");
+      navigate("/");
+    }
   };
   return (
     <div className="h-[100vh] flex flex-col gap-5 justify-center items-center py-10">
@@ -36,6 +45,20 @@ export default function MakeAccount() {
             })}
           />
           {errors.name && <div className="error">{errors.name.message}</div>}
+        </div>
+
+        <div>
+          <input
+            className="account-input"
+            type="text"
+            placeholder="아이디를 입력해주세요"
+            {...register("username", {
+              required: { value: true, message: "required area" },
+            })}
+          />
+          {errors.name && (
+            <div className="error">{errors.username.message}</div>
+          )}
         </div>
 
         <div>
@@ -113,7 +136,8 @@ export default function MakeAccount() {
             <div className="error">{errors.confirm.message}</div>
           )}
         </div>
-        {(watch("Name") !== "") &
+        {(watch("name") !== "") &
+        (watch("username") !== "") &
         (watch("email") !== "") &
         (watch("age") !== "") &
         (watch("pw") !== "") ? (

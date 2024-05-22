@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { auth, isLogin, navState } from "../atom";
+import { useCookies } from "react-cookie";
 
 export default function Nav() {
   const navigate = useNavigate();
   const [status, setStatus] = useRecoilState(navState);
   const [loginStatus, setLoginState] = useRecoilState(isLogin);
   const [user, setUser] = useRecoilState(auth);
+  const [cookies, removeCookie] = useCookies();
+
   return (
     <div className="gap-10 flex justify-between px-12 py-1 items-center bg-gradient-to-b from-black via-black/60 to-transparent w-[100vw]">
       <span
@@ -25,14 +28,18 @@ export default function Nav() {
           }`}
         >
           <span>
-            {loginStatus ? `반가워요 ${user.name}님!` : `로그인이 필요합니다.`}
+            {cookies.token !== "undefined"
+              ? `반가워요 ${cookies.username}님!`
+              : `로그인이 필요합니다.`}
           </span>
-          {loginStatus ? (
+          {cookies.token !== "undefined" ? (
             <span
               onClick={() => {
-                navigate("/login");
                 setLoginState(false);
                 setUser({});
+                removeCookie("token");
+                removeCookie("username");
+                navigate("/login");
               }}
               className="hover:scale-[1.1]"
             >

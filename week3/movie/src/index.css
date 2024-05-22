@@ -22,6 +22,21 @@
   .error {
     color: red;
   }
+  .default-page {
+    border: 1px solid white;
+    padding: 0px 3px 0px 3px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .selected-page {
+    color: black;
+    font-size: 20px;
+    padding: 0px 3px 0px 3px;
+    background-color: #de0913;
+    border: 1px solid #de0913;
+    cursor: pointer;
+    font-weight: 600;
+  }
 }
 
 @layer utilities {

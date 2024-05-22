@@ -20,8 +20,8 @@ export default function TopRated() {
         <Banner {...movies[0]} />
       </div>
       <div className="bg-black flex flex-wrap justify-center gap-5 py-5">
-        {movies.map((movie) => (
-          <Card {...movie} />
+        {movies.map((movie, i) => (
+          <Card {...movie} key={i} />
         ))}
       </div>
     </div>

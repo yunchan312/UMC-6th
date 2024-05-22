@@ -9,6 +9,7 @@ import Upcoming from "./Routes/Upcoming";
 import Detail from "./Routes/Detail";
 import NotFound from "./Routes/NotFound";
 import Login from "./Routes/Login";
+import Test from "./Components/NowPlayingCard";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,6 +33,10 @@ function App() {
     {
       path: "/detail/:id",
       element: <Detail />,
+    },
+    {
+      path: "/test",
+      element: <Test />,
     },
   ]);
   return (
