@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
+      screens: {
+        md: "910px",
+      },
       colors: {
         logo: "#de0913",
       },

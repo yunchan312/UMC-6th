@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { auth, isLogin, navState } from "../atom";
 import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -9,7 +10,6 @@ export default function Nav() {
   const [loginStatus, setLoginState] = useRecoilState(isLogin);
   const [user, setUser] = useRecoilState(auth);
   const [cookies, removeCookie] = useCookies();
-
   return (
     <div className="gap-10 flex justify-between px-12 py-1 items-center bg-gradient-to-b from-black via-black/60 to-transparent w-[100vw]">
       <span
@@ -28,23 +28,34 @@ export default function Nav() {
           }`}
         >
           <span>
-            {cookies.token !== "undefined"
-              ? `반가워요 ${cookies.username}님!`
-              : `로그인이 필요합니다.`}
+            {cookies === null
+              ? cookies.token !== "undefined"
+                ? `반가워요 ${cookies.username}님!`
+                : `로그인이 필요합니다.`
+              : "로그인이 필요합니다."}
           </span>
-          {cookies.token !== "undefined" ? (
-            <span
-              onClick={() => {
-                setLoginState(false);
-                setUser({});
-                removeCookie("token");
-                removeCookie("username");
-                navigate("/login");
-              }}
-              className="hover:scale-[1.1]"
-            >
-              로그아웃
-            </span>
+          {cookies === null ? (
+            cookies.token !== "undefined" ? (
+              <span
+                onClick={() => {
+                  setLoginState(false);
+                  setUser({});
+                  removeCookie("token");
+                  removeCookie("username");
+                  navigate("/login");
+                }}
+                className="hover:scale-[1.1]"
+              >
+                로그아웃
+              </span>
+            ) : (
+              <span
+                onClick={() => navigate("/login")}
+                className="hover:scale-[1.1]"
+              >
+                로그인
+              </span>
+            )
           ) : (
             <span
               onClick={() => navigate("/login")}

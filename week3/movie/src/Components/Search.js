@@ -16,6 +16,9 @@ export default function Search({ movies }) {
       return prev + 1;
     }
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
   useEffect(() => {
     const timer = setInterval(() => {
       setNum((prev) => controlNum(prev));
@@ -33,7 +36,10 @@ export default function Search({ movies }) {
       }}
     >
       <div className="absolute w-full h-full bg-gradient-to-r from-black to-transparent animate-fadeOut" />
-      <form className="h-full relative bottom-10 z-10 flex flex-col justify-center items-center gap-5">
+      <form
+        className="h-full relative bottom-10 z-10 flex flex-col justify-center items-center gap-5 mt-10"
+        onSubmit={onSubmit}
+      >
         <div className="text-white text-[40px]">찾고싶은 영화를 검색하세요</div>
         <input
           type="text"
