@@ -11,6 +11,7 @@ export default function TodoList() {
   return (
     <div className="px-10 flex flex-col justify-center items-center">
       <form className="py-6" onSubmit={onSubmit}>
+        <div className="pb-5 text-center font-bold text-3xl">Todos</div>
         <input
           type="text"
           placeholder="Write your Todo"
